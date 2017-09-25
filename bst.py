@@ -18,20 +18,24 @@ class BinarySearchNode(object):
         return "<BinaryNode %s>" % self.data
 
     def find(self, sought):
-        """Return node with this data.
+        """Return node object with this data.
 
         Start here. Return None if not found.
         """
 
+        # establish as self so you can refer to current node in algorithm
         current = self
 
+        # loop in place until sought value found
         while current:
 
             print "checking ", current.data
 
+            # if data matches parameter inputted in this method, return node
             if current.data == sought:
                 return current
 
+            # traverse left or right down the BST
             elif sought < current.data:
                 current = current.left
 
@@ -42,6 +46,7 @@ class BinarySearchNode(object):
 if __name__ == '__main__':
     # Create sample tree and search for nodes in it
 
+    # Instantiate nodes; observe how parameters are written (current, L, R)
     apple = BinarySearchNode("apple")
     ghost = BinarySearchNode("ghost")
     fence = BinarySearchNode("fence", apple, ghost)
@@ -53,5 +58,6 @@ if __name__ == '__main__':
     nerd = BinarySearchNode("nerd", mystic, pencil)
     money = BinarySearchNode("money", jackal, nerd)
 
+    # How to use: var_name_of_node.find(sought_value)
     print "nerd = ", money.find("nerd")      # should find
     print "banana = ", money.find("banana")  # shouldn't find
